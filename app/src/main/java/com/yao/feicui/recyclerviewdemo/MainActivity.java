@@ -21,9 +21,12 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mRecyclerView= (RecyclerView) findViewById(R.id.recyclerView);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         //设置布局管理器
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
+        //设置recyclerView的布局的分割线
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL_LIST));
         //设置垂直布局，这也是默认的
         layoutManager.setOrientation(OrientationHelper.VERTICAL);
         initData();
@@ -37,8 +40,8 @@ public class MainActivity extends ActionBarActivity {
     }
     private void initData(){
         mData = new ArrayList<>();
-        for (int i = 0; i < 40; i++) {
-            mData.add("item" + i);
+        for (int i = 'A'; i <= 'z'; i++) {
+            mData.add("" + (char)i);
 //            Log.d("sss", String.valueOf(mData.size()));
         }
     }
